@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'roas',
+    'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +53,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend',],
+}
+
 
 TEMPLATES = [
     {
@@ -75,8 +83,18 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'roas_db',
+
+        'USER': 'postgres',
+
+        'PASSWORD': 'ezeka',
+
+        'HOST': 'localhost',
+
+        'PORT': '5432',
     }
 }
 
