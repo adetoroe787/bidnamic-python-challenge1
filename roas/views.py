@@ -23,7 +23,7 @@ class CampaignSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-# Campaign Viewset
+# Campaign Viewset to upload csv file to model
 class CampaignViewSet(viewsets.ModelViewSet):
     """
     A simple ViewSet for viewing and editing Campaign.
@@ -75,7 +75,7 @@ class AdgroupSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-# adgroup Viewset
+# adgroup Viewset to upload csv file to model
 class AdgroupViewSet(viewsets.ModelViewSet):
     """
     A simple ViewSet for viewing and editing Campaign.
@@ -129,7 +129,7 @@ class search_termsSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-# adgroup Viewset
+# adgroup Viewset to upload csv file to model
 class search_termsViewSet(viewsets.ModelViewSet):
     """
     A simple ViewSet for viewing and editing Campaign.
@@ -182,12 +182,3 @@ class search_termsViewSet(viewsets.ModelViewSet):
 
         return Response("Successfully upload the data")
 
-    def searchbyCampaign(request):
-        search_list = search_terms.objects.all()
-        campaign_filter = SearchByCampaignFilter(request.GET, queryset=search_list)
-        return Response(request, {'filter': campaign_filter})
-
-    def searchbyAdgroup(request):
-        search_list = search_terms.objects.all()
-        adgroup_filter = SearchByCampaignFilter(request.GET, queryset=search_list)
-        return Response(request, {'filter': adgroup_filter})
